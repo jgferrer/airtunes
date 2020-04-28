@@ -31,7 +31,7 @@ extension String {
         var captureGroups = [String]()
         for i in 0..<match.numberOfRanges {
             captureGroups.append((self as NSString).substring(
-                with: match.rangeAt(i)))
+                with: match.range(at: i)))
         }
         return captureGroups[group]
     }
