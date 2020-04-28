@@ -1,7 +1,7 @@
 AirTunes
 ========
 
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms macOS](https://img.shields.io/badge/Platforms-macOS-lightgray.svg?style=flat)](http://www.apple.com/macos/)
 [![License Apache](https://img.shields.io/badge/License-APACHE2-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
@@ -9,7 +9,7 @@ AirTunes is a Mac framework for creating an AirPlay audio server. It enables wir
 
 Example
 -------
-AirTunes is used in the [AirBass](https://github.com/jenghis/airbass) app.
+AirTunes is used in the [AirBass](https://github.com/jgferrer/airbass) app.
 
 Instructions
 ------------
@@ -19,7 +19,7 @@ Dependencies
 ------------
 AirTunes depends on the `ABPlayerInterface` framework, which is part of the ABPlayerController project. Follow the instructions on the project page to install the framework:
 
-[https://github.com/jenghis/abplayercontroller](https://github.com/jenghis/abplayercontroller)
+[https://github.com/jgferrer/abplayercontroller](https://github.com/jgferrer/abplayercontroller)
 
 Usage
 -----
