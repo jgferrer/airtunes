@@ -59,7 +59,7 @@ class DAAPParser: Parser {
 
     private func readBytes(_ bytes: Int) -> Data {
         assert(offset + bytes <= data.count)
-        let range = Range(offset..<offset + bytes)
+        let range = (offset..<offset + bytes)
         offset += bytes
         return data.subdata(in: range)
     }

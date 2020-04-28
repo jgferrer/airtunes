@@ -20,12 +20,12 @@ extension GCDAsyncSocket {
         if isIPv6 {
             // Takes advantage of the data alignment in
             // `sockaddr_in6` to avoid messy castings
-            let alignmentRange = Range(8..<24)
+            let alignmentRange = 8..<24
             return address.subdata(in: alignmentRange)
         }
         else {
             // Same as above but with `sockaddr_in`
-            let alignmentRange = Range(4..<8)
+            let alignmentRange = 4..<8
             return address.subdata(in: alignmentRange)
         }
     }

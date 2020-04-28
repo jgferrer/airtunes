@@ -226,8 +226,8 @@ class AudioSession {
                              index: Int, offset: Int) {
         let packetSize = packet.payloadData.count
         packet.payloadData.withUnsafeBytes {
-            buffer.pointee.mAudioData.advanced(by: offset).copyBytes(
-                from: $0, count: packetSize)
+            buffer.pointee.mAudioData.advanced(by: offset).copyMemory(
+                from: $0, byteCount: packetSize)
         }
         let packetDescriptions = buffer.pointee.mPacketDescriptions
         packetDescriptions?[index].mStartOffset = Int64(offset)

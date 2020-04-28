@@ -49,10 +49,10 @@ class DecryptedPacket: RTPPacket, CustomDebugStringConvertible {
                 cryptor, $0, length, &output, output.count, &moved
             )
         }
-        var decrypted = Data(bytes: output[0..<moved])
+        var decrypted = Data(_: output[0..<moved])
 
         // Remaining data is plain-text
-        let remaining = Range(decrypted.count..<length)
+        let remaining = decrypted.count..<length
         decrypted.append(payloadData.subdata(in: remaining))
 
         CCCryptorRelease(cryptor)
