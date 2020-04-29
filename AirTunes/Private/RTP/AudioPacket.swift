@@ -30,8 +30,11 @@ class AudioPacket {
     }
 
     private static func getPayloadType(from data: Data) -> UInt8 {
-        let payloadType: UInt8 = data.subdata(
-            in: 1..<2).withUnsafeBytes { $0.pointee }
+        
+        //let payloadType: UInt8 = data.subdata(
+        //    in: 1..<2).withUnsafeBytes { $0.pointee }∫
+        let payloadType: UInt8 = data.subdata(in: 1..<2).withUnsafeBytes { $0.load(as: UInt8.self) }
+        
         let noMarkerBit: UInt8 = 127
         return payloadType & noMarkerBit
     }
@@ -47,14 +50,18 @@ class NewAudioPacket: RTPPacket {
     }
 
     var sequenceNumber: UInt16 {
-        let sequenceNumber: UInt16 = data.subdata(
-            in: 2..<4).withUnsafeBytes { $0.pointee }
+        //let sequenceNumber: UInt16 = data.subdata(
+        //    in: 2..<4).withUnsafeBytes { $0.pointee }
+        let sequenceNumber: UInt16 = data.subdata(in: 2..<4).withUnsafeBytes { $0.load(as: UInt16.self) }
+        
         return sequenceNumber.bigEndian
     }
 
     var timestamp: UInt32 {
-        let timestamp: UInt32 = data.subdata(
-            in: 4..<8).withUnsafeBytes { $0.pointee }
+        //let timestamp: UInt32 = data.subdata(
+        //    in: 4..<8).withUnsafeBytes { $0.pointee }
+        let timestamp: UInt32 = data.subdata(in: 4..<8).withUnsafeBytes { $0.load(as: UInt32.self) }
+        
         return timestamp.bigEndian
     }
 
@@ -73,14 +80,18 @@ class RetransmittedAudioPacket: RTPPacket {
     }
 
     var sequenceNumber: UInt16 {
-        let sequenceNumber: UInt16 = data.subdata(
-            in: 6..<8).withUnsafeBytes { $0.pointee }
+        //let sequenceNumber: UInt16 = data.subdata(
+        //    in: 6..<8).withUnsafeBytes { $0.pointee }
+        let sequenceNumber: UInt16 = data.subdata(in: 6..<8).withUnsafeBytes { $0.load(as: UInt16.self) }
+        
         return sequenceNumber.bigEndian
     }
 
     var timestamp: UInt32 {
-        let timestamp: UInt32 = data.subdata(
-            in: 8..<12).withUnsafeBytes { $0.pointee }
+        //let timestamp: UInt32 = data.subdata(
+        //    in: 8..<12).withUnsafeBytes { $0.pointee }
+        let timestamp: UInt32 = data.subdata(in: 8..<12).withUnsafeBytes { $0.load(as: UInt32.self) }
+        
         return timestamp.bigEndian
     }
 

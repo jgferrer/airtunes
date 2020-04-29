@@ -71,13 +71,17 @@ class DAAPParser: Parser {
 
     private func intValue(from data: Data) -> Int {
         assert(data.count == 4)
-        let value: Int32 = data.withUnsafeBytes { $0.pointee }
+        //let value: Int32 = data.withUnsafeBytes { $0.pointee }
+        let value: Int32 = data.withUnsafeBytes { $0.load(as: Int32.self) }
+        
         return Int(value.bigEndian)
     }
 
     private func byteValue(from data: Data) -> UInt8 {
         assert(data.count == 1)
-        let value: UInt8 = data.withUnsafeBytes { $0.pointee }
+        //let value: UInt8 = data.withUnsafeBytes { $0.pointee }
+        let value: UInt8 = data.withUnsafeBytes { $0.load(as: UInt8.self) }
+        
         return value
     }
 }
